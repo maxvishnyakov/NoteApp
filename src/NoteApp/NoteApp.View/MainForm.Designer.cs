@@ -31,8 +31,11 @@ namespace NoteApp.View
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.DeleteNoteButton = new System.Windows.Forms.Button();
             this.NotesListBox = new System.Windows.Forms.ListBox();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.EditNoteButton = new System.Windows.Forms.Button();
+            this.NewNoteButton = new System.Windows.Forms.Button();
             this.ShowCategoryLabel = new System.Windows.Forms.Label();
             this.HelpButton = new System.Windows.Forms.Button();
             this.FileButton = new System.Windows.Forms.Button();
@@ -45,9 +48,6 @@ namespace NoteApp.View
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.NoteRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.DeleteNoteButton = new System.Windows.Forms.Button();
-            this.EditNoteButton = new System.Windows.Forms.Button();
-            this.NewNoteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -76,6 +76,7 @@ namespace NoteApp.View
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.splitContainer1.Panel2.Controls.Add(this.NoteRichTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.textBox2);
             this.splitContainer1.Panel2.Controls.Add(this.NoteTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.dateTimePicker2);
@@ -83,10 +84,23 @@ namespace NoteApp.View
             this.splitContainer1.Panel2.Controls.Add(this.ModifiedLabel);
             this.splitContainer1.Panel2.Controls.Add(this.CreatedLabel);
             this.splitContainer1.Panel2.Controls.Add(this.CategoryLabel);
-            this.splitContainer1.Panel2.Controls.Add(this.NoteRichTextBox);
             this.splitContainer1.Size = new System.Drawing.Size(1237, 550);
             this.splitContainer1.SplitterDistance = 412;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // DeleteNoteButton
+            // 
+            this.DeleteNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DeleteNoteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteNoteButton.BackgroundImage")));
+            this.DeleteNoteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DeleteNoteButton.FlatAppearance.BorderSize = 0;
+            this.DeleteNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteNoteButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.DeleteNoteButton.Location = new System.Drawing.Point(113, 499);
+            this.DeleteNoteButton.Name = "DeleteNoteButton";
+            this.DeleteNoteButton.Size = new System.Drawing.Size(43, 44);
+            this.DeleteNoteButton.TabIndex = 9;
+            this.DeleteNoteButton.UseVisualStyleBackColor = true;
             // 
             // NotesListBox
             // 
@@ -111,6 +125,34 @@ namespace NoteApp.View
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(256, 24);
             this.CategoryComboBox.TabIndex = 7;
+            // 
+            // EditNoteButton
+            // 
+            this.EditNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.EditNoteButton.BackColor = System.Drawing.SystemColors.Menu;
+            this.EditNoteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditNoteButton.BackgroundImage")));
+            this.EditNoteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EditNoteButton.FlatAppearance.BorderSize = 0;
+            this.EditNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditNoteButton.Location = new System.Drawing.Point(62, 499);
+            this.EditNoteButton.Name = "EditNoteButton";
+            this.EditNoteButton.Size = new System.Drawing.Size(45, 46);
+            this.EditNoteButton.TabIndex = 5;
+            this.EditNoteButton.UseVisualStyleBackColor = false;
+            // 
+            // NewNoteButton
+            // 
+            this.NewNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.NewNoteButton.BackColor = System.Drawing.SystemColors.Menu;
+            this.NewNoteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("NewNoteButton.BackgroundImage")));
+            this.NewNoteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.NewNoteButton.FlatAppearance.BorderSize = 0;
+            this.NewNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NewNoteButton.Location = new System.Drawing.Point(12, 499);
+            this.NewNoteButton.Name = "NewNoteButton";
+            this.NewNoteButton.Size = new System.Drawing.Size(44, 46);
+            this.NewNoteButton.TabIndex = 4;
+            this.NewNoteButton.UseVisualStyleBackColor = false;
             // 
             // ShowCategoryLabel
             // 
@@ -218,53 +260,12 @@ namespace NoteApp.View
             this.NoteRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteRichTextBox.Location = new System.Drawing.Point(13, 168);
+            this.NoteRichTextBox.Location = new System.Drawing.Point(12, 168);
             this.NoteRichTextBox.Name = "NoteRichTextBox";
             this.NoteRichTextBox.Size = new System.Drawing.Size(797, 370);
-            this.NoteRichTextBox.TabIndex = 8;
+            this.NoteRichTextBox.TabIndex = 17;
             this.NoteRichTextBox.Text = "";
-            this.NoteRichTextBox.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
-            // 
-            // DeleteNoteButton
-            // 
-            this.DeleteNoteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteNoteButton.BackgroundImage")));
-            this.DeleteNoteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DeleteNoteButton.FlatAppearance.BorderSize = 0;
-            this.DeleteNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteNoteButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.DeleteNoteButton.Location = new System.Drawing.Point(113, 499);
-            this.DeleteNoteButton.Name = "DeleteNoteButton";
-            this.DeleteNoteButton.Size = new System.Drawing.Size(43, 44);
-            this.DeleteNoteButton.TabIndex = 9;
-            this.DeleteNoteButton.UseVisualStyleBackColor = true;
-            // 
-            // EditNoteButton
-            // 
-            this.EditNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditNoteButton.BackColor = System.Drawing.SystemColors.Menu;
-            this.EditNoteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditNoteButton.BackgroundImage")));
-            this.EditNoteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.EditNoteButton.FlatAppearance.BorderSize = 0;
-            this.EditNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditNoteButton.Location = new System.Drawing.Point(62, 499);
-            this.EditNoteButton.Name = "EditNoteButton";
-            this.EditNoteButton.Size = new System.Drawing.Size(45, 46);
-            this.EditNoteButton.TabIndex = 5;
-            this.EditNoteButton.UseVisualStyleBackColor = false;
-            // 
-            // NewNoteButton
-            // 
-            this.NewNoteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.NewNoteButton.BackColor = System.Drawing.SystemColors.Menu;
-            this.NewNoteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("NewNoteButton.BackgroundImage")));
-            this.NewNoteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.NewNoteButton.FlatAppearance.BorderSize = 0;
-            this.NewNoteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NewNoteButton.Location = new System.Drawing.Point(12, 499);
-            this.NewNoteButton.Name = "NewNoteButton";
-            this.NewNoteButton.Size = new System.Drawing.Size(44, 46);
-            this.NewNoteButton.TabIndex = 4;
-            this.NewNoteButton.UseVisualStyleBackColor = false;
+            this.NoteRichTextBox.TextChanged += new System.EventHandler(this.NoteRichTextBox_TextChanged);
             // 
             // MainForm
             // 
@@ -296,7 +297,6 @@ namespace NoteApp.View
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.Button EditNoteButton;
         private System.Windows.Forms.Button NewNoteButton;
-        private System.Windows.Forms.RichTextBox NoteRichTextBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label ModifiedLabel;
@@ -306,6 +306,7 @@ namespace NoteApp.View
         private System.Windows.Forms.TextBox NoteTextBox;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button DeleteNoteButton;
+        private System.Windows.Forms.RichTextBox NoteRichTextBox;
     }
 }
 

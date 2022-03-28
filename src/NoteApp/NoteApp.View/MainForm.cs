@@ -22,12 +22,12 @@ namespace NoteApp.View
 
         }
 
-        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        private void NotesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void NotesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void NoteRichTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
