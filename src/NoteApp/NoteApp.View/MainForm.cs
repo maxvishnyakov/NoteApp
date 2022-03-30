@@ -50,27 +50,38 @@ namespace NoteApp.View
             aboutForm.ShowDialog();
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            NoteForm noteForm = new NoteForm();
-            noteForm.ShowDialog();
-        }
-
-        private void editNoteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            NoteForm noteForm = new NoteForm();
-            noteForm.ShowDialog();
-        }
-
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutForm aboutForm = new AboutForm();
             aboutForm.ShowDialog();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void fileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NoteForm noteForm = new NoteForm();
+            noteForm.ShowDialog();
+        }
+
+        private void editNoteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            NoteForm noteForm = new NoteForm();
+            noteForm.ShowDialog();
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
         }
     }
 }

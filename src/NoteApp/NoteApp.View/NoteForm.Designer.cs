@@ -46,7 +46,7 @@ namespace NoteApp.View
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Location = new System.Drawing.Point(9, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 17);
             this.label1.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace NoteApp.View
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 54);
+            this.label2.Location = new System.Drawing.Point(9, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 1;
@@ -64,17 +64,17 @@ namespace NoteApp.View
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 87);
+            this.label3.Location = new System.Drawing.Point(9, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 17);
+            this.label3.Size = new System.Drawing.Size(62, 17);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Created";
+            this.label3.Text = "Created:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(240, 87);
+            this.label4.Location = new System.Drawing.Point(257, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 17);
             this.label4.TabIndex = 3;
@@ -84,34 +84,34 @@ namespace NoteApp.View
             // 
             this.TitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TitleTextBox.Location = new System.Drawing.Point(91, 19);
+            this.TitleTextBox.Location = new System.Drawing.Point(91, 20);
             this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(782, 22);
+            this.TitleTextBox.Size = new System.Drawing.Size(638, 22);
             this.TitleTextBox.TabIndex = 4;
             this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
             // CategoryComboBox
             // 
             this.CategoryComboBox.FormattingEnabled = true;
-            this.CategoryComboBox.Location = new System.Drawing.Point(91, 51);
+            this.CategoryComboBox.Location = new System.Drawing.Point(91, 48);
             this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(173, 24);
+            this.CategoryComboBox.Size = new System.Drawing.Size(138, 24);
             this.CategoryComboBox.TabIndex = 5;
             // 
             // CreatedDate
             // 
             this.CreatedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.CreatedDate.Location = new System.Drawing.Point(91, 82);
+            this.CreatedDate.Location = new System.Drawing.Point(91, 78);
             this.CreatedDate.Name = "CreatedDate";
-            this.CreatedDate.Size = new System.Drawing.Size(114, 22);
+            this.CreatedDate.Size = new System.Drawing.Size(138, 22);
             this.CreatedDate.TabIndex = 6;
             // 
             // ModifiedDate
             // 
             this.ModifiedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.ModifiedDate.Location = new System.Drawing.Point(320, 82);
+            this.ModifiedDate.Location = new System.Drawing.Point(328, 78);
             this.ModifiedDate.Name = "ModifiedDate";
-            this.ModifiedDate.Size = new System.Drawing.Size(114, 22);
+            this.ModifiedDate.Size = new System.Drawing.Size(138, 22);
             this.ModifiedDate.TabIndex = 7;
             // 
             // NoteRichTextBox
@@ -119,9 +119,9 @@ namespace NoteApp.View
             this.NoteRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteRichTextBox.Location = new System.Drawing.Point(12, 121);
+            this.NoteRichTextBox.Location = new System.Drawing.Point(12, 104);
             this.NoteRichTextBox.Name = "NoteRichTextBox";
-            this.NoteRichTextBox.Size = new System.Drawing.Size(861, 412);
+            this.NoteRichTextBox.Size = new System.Drawing.Size(724, 377);
             this.NoteRichTextBox.TabIndex = 8;
             this.NoteRichTextBox.Text = "";
             // 
@@ -129,8 +129,7 @@ namespace NoteApp.View
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.FlatAppearance.BorderSize = 0;
-            this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OkButton.Location = new System.Drawing.Point(679, 539);
+            this.OkButton.Location = new System.Drawing.Point(542, 489);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(97, 31);
             this.OkButton.TabIndex = 9;
@@ -142,8 +141,7 @@ namespace NoteApp.View
             // 
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelButton.FlatAppearance.BorderSize = 0;
-            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Location = new System.Drawing.Point(782, 539);
+            this.CancelButton.Location = new System.Drawing.Point(645, 489);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(91, 31);
             this.CancelButton.TabIndex = 10;
@@ -155,7 +153,7 @@ namespace NoteApp.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 574);
+            this.ClientSize = new System.Drawing.Size(748, 530);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.NoteRichTextBox);
