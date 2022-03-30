@@ -121,16 +121,18 @@ namespace NoteApp.View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NoteRichTextBox.Location = new System.Drawing.Point(12, 121);
             this.NoteRichTextBox.Name = "NoteRichTextBox";
-            this.NoteRichTextBox.Size = new System.Drawing.Size(861, 393);
+            this.NoteRichTextBox.Size = new System.Drawing.Size(861, 412);
             this.NoteRichTextBox.TabIndex = 8;
             this.NoteRichTextBox.Text = "";
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(717, 520);
+            this.OkButton.FlatAppearance.BorderSize = 0;
+            this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OkButton.Location = new System.Drawing.Point(679, 539);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(75, 23);
+            this.OkButton.Size = new System.Drawing.Size(97, 31);
             this.OkButton.TabIndex = 9;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
@@ -139,9 +141,11 @@ namespace NoteApp.View
             // CancelButton
             // 
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.Location = new System.Drawing.Point(798, 520);
+            this.CancelButton.FlatAppearance.BorderSize = 0;
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelButton.Location = new System.Drawing.Point(782, 539);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.Size = new System.Drawing.Size(91, 31);
             this.CancelButton.TabIndex = 10;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -151,7 +155,7 @@ namespace NoteApp.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 555);
+            this.ClientSize = new System.Drawing.Size(892, 574);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.NoteRichTextBox);
