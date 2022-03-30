@@ -43,5 +43,11 @@ namespace NoteApp.View
             NoteForm noteForm = new NoteForm();
             noteForm.ShowDialog();
         }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
+        }
     }
 }
