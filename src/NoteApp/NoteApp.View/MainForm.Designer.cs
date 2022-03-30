@@ -40,6 +40,7 @@ namespace NoteApp.View
             this.HelpButton = new System.Windows.Forms.Button();
             this.FileButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
+            this.NoteRichTextBox = new System.Windows.Forms.RichTextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -47,7 +48,6 @@ namespace NoteApp.View
             this.ModifiedLabel = new System.Windows.Forms.Label();
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.CategoryLabel = new System.Windows.Forms.Label();
-            this.NoteRichTextBox = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -139,6 +139,7 @@ namespace NoteApp.View
             this.EditNoteButton.Size = new System.Drawing.Size(45, 46);
             this.EditNoteButton.TabIndex = 5;
             this.EditNoteButton.UseVisualStyleBackColor = false;
+            this.EditNoteButton.Click += new System.EventHandler(this.EditNoteButton_Click);
             // 
             // NewNoteButton
             // 
@@ -153,6 +154,7 @@ namespace NoteApp.View
             this.NewNoteButton.Size = new System.Drawing.Size(44, 46);
             this.NewNoteButton.TabIndex = 4;
             this.NewNoteButton.UseVisualStyleBackColor = false;
+            this.NewNoteButton.Click += new System.EventHandler(this.NewNoteButton_Click);
             // 
             // ShowCategoryLabel
             // 
@@ -195,6 +197,18 @@ namespace NoteApp.View
             this.EditButton.TabIndex = 1;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
+            // 
+            // NoteRichTextBox
+            // 
+            this.NoteRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoteRichTextBox.Location = new System.Drawing.Point(12, 168);
+            this.NoteRichTextBox.Name = "NoteRichTextBox";
+            this.NoteRichTextBox.Size = new System.Drawing.Size(797, 370);
+            this.NoteRichTextBox.TabIndex = 17;
+            this.NoteRichTextBox.Text = "";
+            this.NoteRichTextBox.TextChanged += new System.EventHandler(this.NoteRichTextBox_TextChanged);
             // 
             // textBox2
             // 
@@ -254,18 +268,6 @@ namespace NoteApp.View
             this.CategoryLabel.Size = new System.Drawing.Size(69, 17);
             this.CategoryLabel.TabIndex = 9;
             this.CategoryLabel.Text = "Category:";
-            // 
-            // NoteRichTextBox
-            // 
-            this.NoteRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteRichTextBox.Location = new System.Drawing.Point(12, 168);
-            this.NoteRichTextBox.Name = "NoteRichTextBox";
-            this.NoteRichTextBox.Size = new System.Drawing.Size(797, 370);
-            this.NoteRichTextBox.TabIndex = 17;
-            this.NoteRichTextBox.Text = "";
-            this.NoteRichTextBox.TextChanged += new System.EventHandler(this.NoteRichTextBox_TextChanged);
             // 
             // MainForm
             // 

@@ -31,5 +31,17 @@ namespace NoteApp.View
         {
 
         }
+
+        private void NewNoteButton_Click(object sender, EventArgs e)
+        {
+            NoteForm noteForm = new NoteForm();
+            noteForm.ShowDialog();
+        }
+
+        private void EditNoteButton_Click(object sender, EventArgs e)
+        {
+            NoteForm noteForm = new NoteForm();
+            noteForm.ShowDialog();
+        }
     }
 }
