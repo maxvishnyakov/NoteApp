@@ -54,6 +54,7 @@ namespace NoteApp.View
             this.editNoteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -106,6 +107,7 @@ namespace NoteApp.View
             this.DeleteNoteButton.Size = new System.Drawing.Size(43, 44);
             this.DeleteNoteButton.TabIndex = 9;
             this.DeleteNoteButton.UseVisualStyleBackColor = true;
+            this.DeleteNoteButton.Click += new System.EventHandler(this.DeleteNoteButton_Click);
             // 
             // NotesListBox
             // 
@@ -286,7 +288,8 @@ namespace NoteApp.View
             // 
             this.editToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNoteToolStripMenuItem,
-            this.editNoteToolStripMenuItem1});
+            this.editNoteToolStripMenuItem1,
+            this.deleteNoteToolStripMenuItem});
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
             this.editToolStripMenuItem1.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem1.Text = "Edit";
@@ -319,6 +322,13 @@ namespace NoteApp.View
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            // 
+            // deleteNoteToolStripMenuItem
+            // 
+            this.deleteNoteToolStripMenuItem.Name = "deleteNoteToolStripMenuItem";
+            this.deleteNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.deleteNoteToolStripMenuItem.Text = "Delete Note";
+            this.deleteNoteToolStripMenuItem.Click += new System.EventHandler(this.deleteNoteToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -370,6 +380,7 @@ namespace NoteApp.View
         private System.Windows.Forms.ToolStripMenuItem addNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editNoteToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem deleteNoteToolStripMenuItem;
     }
 }
 

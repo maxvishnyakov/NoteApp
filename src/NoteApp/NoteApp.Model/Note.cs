@@ -124,11 +124,11 @@ namespace NoteApp.Model
 			Text = text;
 		}
 
-		/// <summary>
-		/// Метод копирования.
-		/// </summary>
-		/// <returns></returns>
-		public object Clone()
+        /// <summary>
+        /// Метод копирования.
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
 		{
 			return new Note(Name, Category, Text);
 		}

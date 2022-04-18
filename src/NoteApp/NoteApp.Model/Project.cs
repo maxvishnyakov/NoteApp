@@ -11,7 +11,7 @@ namespace NoteApp.Model
 		/// <summary>
 		/// Список заметок
 		/// </summary>
-		List<Note> Notes { get; set }
+		public List<Note> Notes { get; set; }
 
 		/// <summary>
 		/// Конструктор класса

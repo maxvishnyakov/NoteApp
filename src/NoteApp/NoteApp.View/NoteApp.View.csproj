@@ -110,5 +110,11 @@
   <ItemGroup>
     <None Include="Resources\icons8-notepad-100.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NoteApp.Model\NoteApp.Model.csproj">
+      <Project>{70C3BD8F-BFDD-441E-A4AE-728A0646469B}</Project>
+      <Name>NoteApp.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
