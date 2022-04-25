@@ -15,11 +15,12 @@ namespace NoteApp.View
     {
         private Project _project = new Project();
 
-        Random random = new Random();
-
         String[] NotesName = {"Основы ЯП", "Рецепт мяса", "Деловая встреча",
             "Запись к врачу","Поход в кино"};
 
+        String[] NotesText = {"Текст 1", "Текст 2" , "Текст 3" ,
+            "Текст 4"  , "Текст 5" };
+ 
         public MainForm()
         {
             InitializeComponent();
@@ -42,8 +43,9 @@ namespace NoteApp.View
         /// </summary>
         private void AddNote()
         {
+            Random random = new Random();
             int number = random.Next(0, 4);
-            Note tmpNote = new Note(NotesName[number], NoteCategory.Miscellaneous, "Text");
+            Note tmpNote = new Note(NotesName[number], NoteCategory.Miscellaneous, NotesText[number]);
             _project.Notes.Add(tmpNote);
         }
 
@@ -54,9 +56,9 @@ namespace NoteApp.View
         {
             if (index > -1)
             {
-                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
                 var result = MessageBox.Show("Do you really want to remove " + "\"" + NotesListBox.SelectedItem.ToString() 
-                    + "\"" + "?", "Deleting a note", buttons);
+                    + "\"" + "?", "Deleting a note", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, 
+                    MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 if (result == DialogResult.OK)
                 {
                     NotesListBox.Items.RemoveAt(index);
@@ -65,14 +67,41 @@ namespace NoteApp.View
             }
         }
 
+        /// <summary>
+        /// Метод для заполнения RichTextBox.
+        /// </summary>
+        private void UpdateSelectedObject(int index)
+        {
+            NoteRichTextBox.Text = _project.Notes[index].Text;
+            NoteRichTextBox.Show();
+        }
+
+        /// <summary>
+        /// Метод для очистки RichTextBox.
+        /// </summary>
+        private void ClearSelectedObject()
+        {
+            NoteRichTextBox.Clear();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Метод для обновления RichTextBox.
+        /// </summary>
         private void NotesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (NotesListBox.SelectedIndex == -1)
+            {
+                ClearSelectedObject();
+            }
+            else
+            {
+                UpdateSelectedObject(NotesListBox.SelectedIndex);
+            }
         }
 
         private void NoteRichTextBox_TextChanged(object sender, EventArgs e)
@@ -109,9 +138,17 @@ namespace NoteApp.View
 
         }
 
+        /// <summary>
+        /// Обработчик кнопки "Exit" главного меню.
+        /// </summary>
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var result = MessageBox.Show("Do you really want exit ?", "Exit", MessageBoxButtons.OKCancel, MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
         }
 
         private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
