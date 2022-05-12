@@ -51,7 +51,7 @@ namespace NoteApp.Model
 				{
 					throw new ArgumentException(
 						$"The number of letters in the title must be less than 50"
-						+ $"But was {_name.Length}");
+						+ $" But was {value.Length}");
 				}
 				_name = value;
 				_lastModifiedTime = DateTime.Now;
@@ -123,6 +123,10 @@ namespace NoteApp.Model
 			Category = category;
 			Text = text;
 		}
+
+        public Note()
+        {
+        }
 
         /// <summary>
         /// Метод копирования.
