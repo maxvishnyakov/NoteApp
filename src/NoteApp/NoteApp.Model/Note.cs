@@ -14,7 +14,7 @@ namespace NoteApp.Model
 		/// <summary>
 		/// Название заметки.
 		/// </summary>
-		private string _name = "Без названия";
+		private string _name;
 
 		/// <summary>
 		/// Категория заметки.
@@ -131,10 +131,9 @@ namespace NoteApp.Model
         /// <summary>
         /// Метод копирования.
         /// </summary>
-        /// <returns></returns>
         public object Clone()
 		{
-			return new Note(Name, Category, Text);
+			return new Note(this.Name, this.Category, this.Text);
 		}
 	}
 }

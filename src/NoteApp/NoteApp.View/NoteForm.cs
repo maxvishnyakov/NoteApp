@@ -24,15 +24,38 @@ namespace NoteApp.View
         private string _noteError;
 
         /// <summary>
+        /// Константа для корректного цвета. 
+        /// </summary>
+        private readonly Color _correctColor = Color.White;
+
+        /// <summary>
+        /// Константа для цвета ошибки.
+        /// </summary>
+        private readonly Color _errorColor = Color.LightPink;
+
+        /// <summary>
         /// Конструктор формы.
         /// </summary>
         public NoteForm()
         {
             InitializeComponent();
-            _note.Name = "TestHome";
-            _note.Category = NoteCategory.Home;
-            _note.Text = "TextHome";
+            CategoryComboBox.DataSource = Enum.GetValues(typeof(NoteCategory));
             UpdateForm();
+        }
+
+        /// <summary>
+        /// Задает и возвращает объект заметки.
+        /// </summary>
+        public Note Note
+        {
+            get
+            {
+                return _note;
+            }
+            set
+            {
+                _note = value;
+            }
         }
 
         /// <summary>
@@ -40,8 +63,8 @@ namespace NoteApp.View
         /// </summary>
         private void UpdateForm()
         {
-            TitleTextBox.Text = _note.Name;
-            CategoryComboBox.Text = _note.Category.ToString();
+            NameTextBox.Text = _note.Name;
+            CategoryComboBox.SelectedItem = _note.Category.ToString();
             NoteRichTextBox.Text = _note.Text;
         }
 
@@ -50,14 +73,10 @@ namespace NoteApp.View
         /// </summary>
         private void UpdateObject()
         {
-            _note.Name = TitleTextBox.Text;
-            _note.Category = (NoteCategory)CategoryComboBox.SelectedItem;
+            _note.Name = NameTextBox.Text;
+            _note.Category = (NoteCategory)Enum.Parse(typeof(NoteCategory),
+                CategoryComboBox.SelectedValue.ToString());
             _note.Text = NoteRichTextBox.Text;
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -67,13 +86,13 @@ namespace NoteApp.View
         {
             try
             {
-                _note.Name = TitleTextBox.Text;
-                TitleTextBox.BackColor = Color.White;
+                _note.Name = NameTextBox.Text;
+                NameTextBox.BackColor = _correctColor;
                 _noteError = "";
             }
             catch(ArgumentException exception)
             {
-                TitleTextBox.BackColor = Color.LightPink;
+                NameTextBox.BackColor = _errorColor;
                 _noteError = exception.Message;
             }
         }
@@ -81,7 +100,6 @@ namespace NoteApp.View
         /// <summary>
         /// Проверка на анличие ошибок в форме.
         /// </summary>
-        /// <returns></returns>
         private bool CheckFormOnErrors()
         {
             if(_noteError != "")
@@ -95,20 +113,17 @@ namespace NoteApp.View
             }
         }
 
-        /// <summary>
-        /// Обработчик кнопки "Ok".
-        /// </summary>
         private void OkButton_Click(object sender, EventArgs e)
         {
             CheckFormOnErrors();
             UpdateObject();
+            DialogResult = DialogResult.OK;
+            this.Close();
         }
 
-        /// <summary>
-        /// Обработчик кнопки "Cancel".
-        /// </summary>
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }
