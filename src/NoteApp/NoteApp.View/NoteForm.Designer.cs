@@ -34,7 +34,7 @@ namespace NoteApp.View
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.TitleTextBox = new System.Windows.Forms.TextBox();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.CreatedDate = new System.Windows.Forms.DateTimePicker();
             this.ModifiedDate = new System.Windows.Forms.DateTimePicker();
@@ -69,7 +69,6 @@ namespace NoteApp.View
             this.label3.Size = new System.Drawing.Size(62, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Created:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -80,15 +79,15 @@ namespace NoteApp.View
             this.label4.TabIndex = 3;
             this.label4.Text = "Modified:";
             // 
-            // TitleTextBox
+            // NameTextBox
             // 
-            this.TitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TitleTextBox.Location = new System.Drawing.Point(91, 20);
-            this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(638, 22);
-            this.TitleTextBox.TabIndex = 4;
-            this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
+            this.NameTextBox.Location = new System.Drawing.Point(91, 20);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(638, 22);
+            this.NameTextBox.TabIndex = 4;
+            this.NameTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
             // CategoryComboBox
             // 
@@ -160,7 +159,7 @@ namespace NoteApp.View
             this.Controls.Add(this.ModifiedDate);
             this.Controls.Add(this.CreatedDate);
             this.Controls.Add(this.CategoryComboBox);
-            this.Controls.Add(this.TitleTextBox);
+            this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -179,7 +178,7 @@ namespace NoteApp.View
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TitleTextBox;
+        private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.DateTimePicker CreatedDate;
         private System.Windows.Forms.DateTimePicker ModifiedDate;

@@ -43,10 +43,34 @@ namespace NoteApp.View
         /// </summary>
         private void AddNote()
         {
-            Random random = new Random();
-            int number = random.Next(0, 4);
-            Note tmpNote = new Note(NotesName[number], NoteCategory.Miscellaneous, NotesText[number]);
-            _project.Notes.Add(tmpNote);
+            var noteForm = new NoteForm();
+            noteForm.ShowDialog();
+            if (noteForm.DialogResult == DialogResult.OK)
+            {
+                var newData = noteForm.Note;
+                _project.Notes.Add(newData);
+            }
+        }
+
+        /// <summary>
+        /// Редактирование существующей заметки.
+        /// </summary>
+        private void EditNote()
+        {
+            var selectedIndex = NotesListBox.SelectedIndex;
+            Note selectedNote = _project.Notes[selectedIndex];
+            Note clonedNote = (Note)selectedNote.Clone();
+            var noteForm = new NoteForm();
+            noteForm.Note = clonedNote;
+            noteForm.ShowDialog();
+            if (noteForm.DialogResult == DialogResult.OK)
+            {
+                var updatedNote = noteForm.Note;
+                NotesListBox.Items.RemoveAt(selectedIndex);
+                _project.Notes.RemoveAt(selectedIndex);
+                _project.Notes.Insert(selectedIndex, updatedNote);
+                NotesListBox.Items.Insert(selectedIndex, updatedNote);
+            }
         }
 
         /// <summary>
@@ -74,6 +98,8 @@ namespace NoteApp.View
         {
             NoteRichTextBox.Text = _project.Notes[index].Text;
             NoteRichTextBox.Show();
+            label.Text = _project.Notes[index].Name;
+            categoryTextBox.Text = _project.Notes[index].Category.ToString();
         }
 
         /// <summary>
@@ -82,11 +108,6 @@ namespace NoteApp.View
         private void ClearSelectedObject()
         {
             NoteRichTextBox.Clear();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -104,11 +125,6 @@ namespace NoteApp.View
             }
         }
 
-        private void NoteRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void NewNoteButton_Click(object sender, EventArgs e)
         {
             AddNote();
@@ -117,8 +133,8 @@ namespace NoteApp.View
 
         private void EditNoteButton_Click(object sender, EventArgs e)
         {
-            NoteForm noteForm = new NoteForm();
-            noteForm.ShowDialog();
+            EditNote();
+            UpdatedListBox(); ;
         }
 
         private void HelpButton_Click(object sender, EventArgs e)
@@ -133,15 +149,13 @@ namespace NoteApp.View
             aboutForm.ShowDialog();
         }
 
-        private void fileToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AddNote();
+            UpdatedListBox();
         }
 
-        /// <summary>
-        /// Обработчик кнопки "Exit" главного меню.
-        /// </summary>
-        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Do you really want exit ?", "Exit", MessageBoxButtons.OKCancel, MessageBoxIcon.Information,
                 MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
@@ -151,25 +165,10 @@ namespace NoteApp.View
             }
         }
 
-        private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddNote();
+            EditNote();
             UpdatedListBox();
-
-            //NoteForm noteForm = new NoteForm();
-            //noteForm.ShowDialog();
-        }
-
-        private void editNoteToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            NoteForm noteForm = new NoteForm();
-            noteForm.ShowDialog();
-        }
-
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            AboutForm aboutForm = new AboutForm();
-            aboutForm.ShowDialog();
         }
 
         private void DeleteNoteButton_Click(object sender, EventArgs e)
@@ -181,6 +180,15 @@ namespace NoteApp.View
         private void deleteNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RemoveNote(NotesListBox.SelectedIndex);
+            UpdatedListBox();
+        }
+
+        private void addRandomObjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            int number = random.Next(0, 4);
+            Note tmpNote = new Note(NotesName[number], NoteCategory.Miscellaneous, NotesText[number]);
+            _project.Notes.Add(tmpNote);
             UpdatedListBox();
         }
     }

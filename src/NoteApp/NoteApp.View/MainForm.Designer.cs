@@ -37,10 +37,10 @@ namespace NoteApp.View
             this.EditNoteButton = new System.Windows.Forms.Button();
             this.NewNoteButton = new System.Windows.Forms.Button();
             this.ShowCategoryLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.NoteRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.categoryTextBox = new System.Windows.Forms.TextBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.ModifiedLabel = new System.Windows.Forms.Label();
@@ -48,13 +48,14 @@ namespace NoteApp.View
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editNoteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addRandomObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -81,10 +82,10 @@ namespace NoteApp.View
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.label);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.NoteRichTextBox);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.categoryTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.dateTimePicker2);
             this.splitContainer1.Panel2.Controls.Add(this.dateTimePicker1);
             this.splitContainer1.Panel2.Controls.Add(this.ModifiedLabel);
@@ -117,9 +118,9 @@ namespace NoteApp.View
             this.NotesListBox.FormattingEnabled = true;
             this.NotesListBox.IntegralHeight = false;
             this.NotesListBox.ItemHeight = 16;
-            this.NotesListBox.Location = new System.Drawing.Point(12, 89);
+            this.NotesListBox.Location = new System.Drawing.Point(12, 38);
             this.NotesListBox.Name = "NotesListBox";
-            this.NotesListBox.Size = new System.Drawing.Size(324, 376);
+            this.NotesListBox.Size = new System.Drawing.Size(324, 427);
             this.NotesListBox.TabIndex = 8;
             this.NotesListBox.SelectedIndexChanged += new System.EventHandler(this.NotesListBox_SelectedIndexChanged);
             // 
@@ -128,7 +129,7 @@ namespace NoteApp.View
             this.CategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryComboBox.FormattingEnabled = true;
-            this.CategoryComboBox.Location = new System.Drawing.Point(125, 59);
+            this.CategoryComboBox.Location = new System.Drawing.Point(125, 8);
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(211, 24);
             this.CategoryComboBox.TabIndex = 7;
@@ -166,21 +167,21 @@ namespace NoteApp.View
             // ShowCategoryLabel
             // 
             this.ShowCategoryLabel.AutoSize = true;
-            this.ShowCategoryLabel.Location = new System.Drawing.Point(12, 62);
+            this.ShowCategoryLabel.Location = new System.Drawing.Point(12, 11);
             this.ShowCategoryLabel.Name = "ShowCategoryLabel";
             this.ShowCategoryLabel.Size = new System.Drawing.Size(107, 17);
             this.ShowCategoryLabel.TabIndex = 3;
             this.ShowCategoryLabel.Text = "Show Category:";
             // 
-            // label2
+            // label
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(6, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(155, 38);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Заметка";
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label.Location = new System.Drawing.Point(6, 11);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(155, 38);
+            this.label.TabIndex = 19;
+            this.label.Text = "Заметка";
             // 
             // label1
             // 
@@ -196,26 +197,24 @@ namespace NoteApp.View
             this.NoteRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteRichTextBox.Location = new System.Drawing.Point(13, 168);
+            this.NoteRichTextBox.Location = new System.Drawing.Point(13, 117);
             this.NoteRichTextBox.Name = "NoteRichTextBox";
-            this.NoteRichTextBox.Size = new System.Drawing.Size(653, 342);
+            this.NoteRichTextBox.Size = new System.Drawing.Size(653, 393);
             this.NoteRichTextBox.TabIndex = 17;
             this.NoteRichTextBox.Text = "";
-            this.NoteRichTextBox.TextChanged += new System.EventHandler(this.NoteRichTextBox_TextChanged);
             // 
-            // textBox2
+            // categoryTextBox
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Menu;
-            this.textBox2.Location = new System.Drawing.Point(78, 112);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(127, 22);
-            this.textBox2.TabIndex = 16;
-            this.textBox2.Text = "Фавыпавы";
+            this.categoryTextBox.BackColor = System.Drawing.SystemColors.Menu;
+            this.categoryTextBox.Location = new System.Drawing.Point(78, 61);
+            this.categoryTextBox.Name = "categoryTextBox";
+            this.categoryTextBox.Size = new System.Drawing.Size(127, 22);
+            this.categoryTextBox.TabIndex = 16;
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(78, 140);
+            this.dateTimePicker2.Location = new System.Drawing.Point(78, 89);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(127, 22);
             this.dateTimePicker2.TabIndex = 13;
@@ -223,7 +222,7 @@ namespace NoteApp.View
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(291, 140);
+            this.dateTimePicker1.Location = new System.Drawing.Point(291, 89);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(127, 22);
             this.dateTimePicker1.TabIndex = 12;
@@ -231,7 +230,7 @@ namespace NoteApp.View
             // ModifiedLabel
             // 
             this.ModifiedLabel.AutoSize = true;
-            this.ModifiedLabel.Location = new System.Drawing.Point(220, 142);
+            this.ModifiedLabel.Location = new System.Drawing.Point(220, 91);
             this.ModifiedLabel.Name = "ModifiedLabel";
             this.ModifiedLabel.Size = new System.Drawing.Size(65, 17);
             this.ModifiedLabel.TabIndex = 11;
@@ -240,7 +239,7 @@ namespace NoteApp.View
             // CreatedLabel
             // 
             this.CreatedLabel.AutoSize = true;
-            this.CreatedLabel.Location = new System.Drawing.Point(10, 142);
+            this.CreatedLabel.Location = new System.Drawing.Point(10, 91);
             this.CreatedLabel.Name = "CreatedLabel";
             this.CreatedLabel.Size = new System.Drawing.Size(62, 17);
             this.CreatedLabel.TabIndex = 10;
@@ -249,7 +248,7 @@ namespace NoteApp.View
             // CategoryLabel
             // 
             this.CategoryLabel.AutoSize = true;
-            this.CategoryLabel.Location = new System.Drawing.Point(10, 115);
+            this.CategoryLabel.Location = new System.Drawing.Point(10, 64);
             this.CategoryLabel.Name = "CategoryLabel";
             this.CategoryLabel.Size = new System.Drawing.Size(69, 17);
             this.CategoryLabel.TabIndex = 9;
@@ -271,25 +270,25 @@ namespace NoteApp.View
             // fileToolStripMenuItem1
             // 
             this.fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem1});
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
             this.fileToolStripMenuItem1.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem1.Text = "File";
-            this.fileToolStripMenuItem1.Click += new System.EventHandler(this.fileToolStripMenuItem1_Click);
             // 
-            // exitToolStripMenuItem1
+            // exitToolStripMenuItem
             // 
-            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(116, 26);
-            this.exitToolStripMenuItem1.Text = "Exit";
-            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNoteToolStripMenuItem,
             this.editNoteToolStripMenuItem1,
-            this.deleteNoteToolStripMenuItem});
+            this.deleteNoteToolStripMenuItem,
+            this.addRandomObjectToolStripMenuItem});
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
             this.editToolStripMenuItem1.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem1.Text = "Edit";
@@ -297,16 +296,30 @@ namespace NoteApp.View
             // addNoteToolStripMenuItem
             // 
             this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
-            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
             this.addNoteToolStripMenuItem.Text = "Add Note";
             this.addNoteToolStripMenuItem.Click += new System.EventHandler(this.addNoteToolStripMenuItem_Click);
             // 
             // editNoteToolStripMenuItem1
             // 
             this.editNoteToolStripMenuItem1.Name = "editNoteToolStripMenuItem1";
-            this.editNoteToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
+            this.editNoteToolStripMenuItem1.Size = new System.Drawing.Size(228, 26);
             this.editNoteToolStripMenuItem1.Text = "Edit Note";
-            this.editNoteToolStripMenuItem1.Click += new System.EventHandler(this.editNoteToolStripMenuItem1_Click);
+            this.editNoteToolStripMenuItem1.Click += new System.EventHandler(this.editNoteToolStripMenuItem_Click);
+            // 
+            // deleteNoteToolStripMenuItem
+            // 
+            this.deleteNoteToolStripMenuItem.Name = "deleteNoteToolStripMenuItem";
+            this.deleteNoteToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
+            this.deleteNoteToolStripMenuItem.Text = "Delete Note";
+            this.deleteNoteToolStripMenuItem.Click += new System.EventHandler(this.deleteNoteToolStripMenuItem_Click);
+            // 
+            // addRandomObjectToolStripMenuItem
+            // 
+            this.addRandomObjectToolStripMenuItem.Name = "addRandomObjectToolStripMenuItem";
+            this.addRandomObjectToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
+            this.addRandomObjectToolStripMenuItem.Text = "Add Random Object";
+            this.addRandomObjectToolStripMenuItem.Click += new System.EventHandler(this.addRandomObjectToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
@@ -321,14 +334,7 @@ namespace NoteApp.View
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem1.Text = "About";
-            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
-            // 
-            // deleteNoteToolStripMenuItem
-            // 
-            this.deleteNoteToolStripMenuItem.Name = "deleteNoteToolStripMenuItem";
-            this.deleteNoteToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.deleteNoteToolStripMenuItem.Text = "Delete Note";
-            this.deleteNoteToolStripMenuItem.Click += new System.EventHandler(this.deleteNoteToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -340,7 +346,6 @@ namespace NoteApp.View
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "NoteApp";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -367,20 +372,21 @@ namespace NoteApp.View
         private System.Windows.Forms.Label CreatedLabel;
         private System.Windows.Forms.Label CategoryLabel;
         private System.Windows.Forms.ListBox NotesListBox;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox categoryTextBox;
         private System.Windows.Forms.Button DeleteNoteButton;
         private System.Windows.Forms.RichTextBox NoteRichTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editNoteToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem deleteNoteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addRandomObjectToolStripMenuItem;
     }
 }
 
