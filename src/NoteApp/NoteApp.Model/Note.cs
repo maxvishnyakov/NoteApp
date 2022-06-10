@@ -14,7 +14,7 @@ namespace NoteApp.Model
 		/// <summary>
 		/// Название заметки.
 		/// </summary>
-		private string _name;
+		private string _name = "Без названия";
 
 		/// <summary>
 		/// Категория заметки.

@@ -34,11 +34,11 @@ namespace NoteApp.View
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.NameTextBox = new System.Windows.Forms.TextBox();
-            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
-            this.CreatedDate = new System.Windows.Forms.DateTimePicker();
-            this.ModifiedDate = new System.Windows.Forms.DateTimePicker();
-            this.NoteRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.TextBoxNoteTitle = new System.Windows.Forms.TextBox();
+            this.ComboBoxNoteCategory = new System.Windows.Forms.ComboBox();
+            this.NoteDateCreate = new System.Windows.Forms.DateTimePicker();
+            this.NoteDateModify = new System.Windows.Forms.DateTimePicker();
+            this.TextBoxNoteText = new System.Windows.Forms.RichTextBox();
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -79,50 +79,58 @@ namespace NoteApp.View
             this.label4.TabIndex = 3;
             this.label4.Text = "Modified:";
             // 
-            // NameTextBox
+            // TextBoxNoteTitle
             // 
-            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TextBoxNoteTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NameTextBox.Location = new System.Drawing.Point(91, 20);
-            this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(638, 22);
-            this.NameTextBox.TabIndex = 4;
-            this.NameTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
+            this.TextBoxNoteTitle.Location = new System.Drawing.Point(91, 20);
+            this.TextBoxNoteTitle.Name = "TextBoxNoteTitle";
+            this.TextBoxNoteTitle.Size = new System.Drawing.Size(638, 22);
+            this.TextBoxNoteTitle.TabIndex = 4;
+            this.TextBoxNoteTitle.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
-            // CategoryComboBox
+            // ComboBoxNoteCategory
             // 
-            this.CategoryComboBox.FormattingEnabled = true;
-            this.CategoryComboBox.Location = new System.Drawing.Point(91, 48);
-            this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(138, 24);
-            this.CategoryComboBox.TabIndex = 5;
+            this.ComboBoxNoteCategory.FormattingEnabled = true;
+            this.ComboBoxNoteCategory.Items.AddRange(new object[] {
+            "Documents",
+            "Finance",
+            "Health and Sports",
+            "Home",
+            "People",
+            "Work",
+            "Miscellaneous"});
+            this.ComboBoxNoteCategory.Location = new System.Drawing.Point(91, 48);
+            this.ComboBoxNoteCategory.Name = "ComboBoxNoteCategory";
+            this.ComboBoxNoteCategory.Size = new System.Drawing.Size(138, 24);
+            this.ComboBoxNoteCategory.TabIndex = 5;
             // 
-            // CreatedDate
+            // NoteDateCreate
             // 
-            this.CreatedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.CreatedDate.Location = new System.Drawing.Point(91, 78);
-            this.CreatedDate.Name = "CreatedDate";
-            this.CreatedDate.Size = new System.Drawing.Size(138, 22);
-            this.CreatedDate.TabIndex = 6;
+            this.NoteDateCreate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.NoteDateCreate.Location = new System.Drawing.Point(91, 78);
+            this.NoteDateCreate.Name = "NoteDateCreate";
+            this.NoteDateCreate.Size = new System.Drawing.Size(138, 22);
+            this.NoteDateCreate.TabIndex = 6;
             // 
-            // ModifiedDate
+            // NoteDateModify
             // 
-            this.ModifiedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.ModifiedDate.Location = new System.Drawing.Point(328, 78);
-            this.ModifiedDate.Name = "ModifiedDate";
-            this.ModifiedDate.Size = new System.Drawing.Size(138, 22);
-            this.ModifiedDate.TabIndex = 7;
+            this.NoteDateModify.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.NoteDateModify.Location = new System.Drawing.Point(328, 78);
+            this.NoteDateModify.Name = "NoteDateModify";
+            this.NoteDateModify.Size = new System.Drawing.Size(138, 22);
+            this.NoteDateModify.TabIndex = 7;
             // 
-            // NoteRichTextBox
+            // TextBoxNoteText
             // 
-            this.NoteRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TextBoxNoteText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteRichTextBox.Location = new System.Drawing.Point(12, 104);
-            this.NoteRichTextBox.Name = "NoteRichTextBox";
-            this.NoteRichTextBox.Size = new System.Drawing.Size(724, 377);
-            this.NoteRichTextBox.TabIndex = 8;
-            this.NoteRichTextBox.Text = "";
+            this.TextBoxNoteText.Location = new System.Drawing.Point(12, 104);
+            this.TextBoxNoteText.Name = "TextBoxNoteText";
+            this.TextBoxNoteText.Size = new System.Drawing.Size(724, 377);
+            this.TextBoxNoteText.TabIndex = 8;
+            this.TextBoxNoteText.Text = "";
             // 
             // OkButton
             // 
@@ -155,11 +163,11 @@ namespace NoteApp.View
             this.ClientSize = new System.Drawing.Size(748, 530);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
-            this.Controls.Add(this.NoteRichTextBox);
-            this.Controls.Add(this.ModifiedDate);
-            this.Controls.Add(this.CreatedDate);
-            this.Controls.Add(this.CategoryComboBox);
-            this.Controls.Add(this.NameTextBox);
+            this.Controls.Add(this.TextBoxNoteText);
+            this.Controls.Add(this.NoteDateModify);
+            this.Controls.Add(this.NoteDateCreate);
+            this.Controls.Add(this.ComboBoxNoteCategory);
+            this.Controls.Add(this.TextBoxNoteTitle);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -178,11 +186,11 @@ namespace NoteApp.View
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox NameTextBox;
-        private System.Windows.Forms.ComboBox CategoryComboBox;
-        private System.Windows.Forms.DateTimePicker CreatedDate;
-        private System.Windows.Forms.DateTimePicker ModifiedDate;
-        private System.Windows.Forms.RichTextBox NoteRichTextBox;
+        private System.Windows.Forms.TextBox TextBoxNoteTitle;
+        private System.Windows.Forms.ComboBox ComboBoxNoteCategory;
+        private System.Windows.Forms.DateTimePicker NoteDateCreate;
+        private System.Windows.Forms.DateTimePicker NoteDateModify;
+        private System.Windows.Forms.RichTextBox TextBoxNoteText;
         private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Button CancelButton;
     }

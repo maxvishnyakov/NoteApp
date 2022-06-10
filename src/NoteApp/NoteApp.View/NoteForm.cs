@@ -19,6 +19,11 @@ namespace NoteApp.View
         private Note _note = new Note();
 
         /// <summary>
+        /// Переменная заметки.
+        /// </summary>
+        private Note _noteCopy = new Note();
+
+        /// <summary>
         /// Строка для вывода ошибки.
         /// </summary>
         private string _noteError;
@@ -34,13 +39,18 @@ namespace NoteApp.View
         private readonly Color _errorColor = Color.LightPink;
 
         /// <summary>
+        /// Переменная класса, представляющего из себя два словаря типа 
+        /// <Enum, String> и <String, Enum> 
+        /// </summary>
+        private NoteCategoryTools _noteCategoryTools = new NoteCategoryTools();
+
+
+        /// <summary>
         /// Конструктор формы.
         /// </summary>
         public NoteForm()
         {
             InitializeComponent();
-            CategoryComboBox.DataSource = Enum.GetValues(typeof(NoteCategory));
-            UpdateForm();
         }
 
         /// <summary>
@@ -55,6 +65,15 @@ namespace NoteApp.View
             set
             {
                 _note = value;
+                if (_note!=null)
+                {
+                    _noteCopy = (Note)_note.Clone();
+                }
+                else
+                {
+                    _noteCopy = new Note();
+                }
+                UpdateForm();
             }
         }
 
@@ -63,9 +82,11 @@ namespace NoteApp.View
         /// </summary>
         private void UpdateForm()
         {
-            NameTextBox.Text = _note.Name;
-            CategoryComboBox.SelectedItem = _note.Category.ToString();
-            NoteRichTextBox.Text = _note.Text;
+            ComboBoxNoteCategory.SelectedItem = _noteCategoryTools.CategoriesByEnum[_noteCopy.Category];
+            TextBoxNoteTitle.Text = _noteCopy.Name;
+            NoteDateCreate.Value = _noteCopy.CreationDate;
+            NoteDateModify.Value = _noteCopy.LastModifiedTime;
+            TextBoxNoteText.Text = _noteCopy.Text;
         }
 
         /// <summary>
@@ -73,10 +94,10 @@ namespace NoteApp.View
         /// </summary>
         private void UpdateObject()
         {
-            _note.Name = NameTextBox.Text;
-            _note.Category = (NoteCategory)Enum.Parse(typeof(NoteCategory),
-                CategoryComboBox.SelectedValue.ToString());
-            _note.Text = NoteRichTextBox.Text;
+            _noteCopy.Category = _noteCategoryTools.CategoriesByString
+                [ComboBoxNoteCategory.SelectedItem.ToString()];
+            _noteCopy.Name = TextBoxNoteTitle.Text;
+            _noteCopy.Text = TextBoxNoteText.Text;
         }
 
         /// <summary>
@@ -86,13 +107,13 @@ namespace NoteApp.View
         {
             try
             {
-                _note.Name = NameTextBox.Text;
-                NameTextBox.BackColor = _correctColor;
+                _noteCopy.Name = TextBoxNoteTitle.Text;
+                TextBoxNoteTitle.BackColor = _correctColor;
                 _noteError = "";
             }
             catch(ArgumentException exception)
             {
-                NameTextBox.BackColor = _errorColor;
+                TextBoxNoteTitle.BackColor = _errorColor;
                 _noteError = exception.Message;
             }
         }
@@ -115,10 +136,13 @@ namespace NoteApp.View
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            CheckFormOnErrors();
-            UpdateObject();
-            DialogResult = DialogResult.OK;
-            this.Close();
+            if (CheckFormOnErrors())
+            {
+                UpdateObject();
+                _note = _noteCopy;
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
