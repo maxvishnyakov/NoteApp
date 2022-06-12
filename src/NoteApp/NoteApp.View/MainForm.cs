@@ -30,10 +30,17 @@ namespace NoteApp.View
         /// Показывать все заметки без учета категории
         /// </summary>
         private const string _allCategory = "All";
- 
+
+        /// <summary>
+        /// Экземпляр класс ProjectSerializer для сереализации.
+        /// </summary>
+        private ProjectSerializer _projectSerializer = new ProjectSerializer();
+
+
         public MainForm()
         {
             InitializeComponent();
+            _project = _projectSerializer.LoadFromFile();
             CategoryComboBox.SelectedIndex = 0;
             ClearSelectedNote();
         }
@@ -90,7 +97,6 @@ namespace NoteApp.View
         private void AddNote()
         {
             var noteForm = new NoteForm();
-            //noteForm.Note = null;
             noteForm.ShowDialog();
             if (noteForm.DialogResult == DialogResult.OK)
             {
@@ -98,6 +104,7 @@ namespace NoteApp.View
                 OutputByCategory();
                 UpdatedListBox();
                 NotesListBox.SelectedIndex = 0;
+                _projectSerializer.SaveToFile(_project);
             }
         }
 
@@ -123,6 +130,7 @@ namespace NoteApp.View
                 OutputByCategory();
                 UpdateSelectedObject(NotesListBox.SelectedIndex);
                 UpdatedListBox();
+                _projectSerializer.SaveToFile(_project);
             }
             NotesListBox.SelectedIndex = currentIndex;
         }
@@ -147,6 +155,7 @@ namespace NoteApp.View
                 _project.Notes.Add(new Note(randomNoteTitle, randomNoteCategoryEnum,
                     randomNoteText));
             }
+            _projectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
@@ -168,6 +177,7 @@ namespace NoteApp.View
                 ClearSelectedNote();
                 OutputByCategory();
                 UpdatedListBox();
+                _projectSerializer.SaveToFile(_project);
             }
         }
 
