@@ -6,9 +6,6 @@
 #define MyAppPublisher "VMI, Inc."
 #define MyAppURL "https://github.com/maxvishnyakov"
 #define MyAppExeName "NoteApp.View.exe"
-#define MyAppAssocName MyAppName + " File"
-#define MyAppAssocExt ".myp"
-#define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -39,21 +36,14 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\Максим Вишняков\source\repos\NTVP\NoteApp\src\NoteApp\NoteApp.View\bin\Debug\NoteApp.View.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Максим Вишняков\source\repos\NTVP\NoteApp\src\NoteApp\NoteApp.View\bin\Debug\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Максим Вишняков\source\repos\NTVP\NoteApp\src\NoteApp\NoteApp.Model\bin\Debug\NoteApp.Model.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\src\NoteApp\NoteApp.View\bin\Debug\NoteApp.View.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\src\NoteApp\NoteApp.View\bin\Debug\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\src\NoteApp\NoteApp.Model\bin\Debug\NoteApp.Model.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
-[Registry]
-Root: HKA; Subkey: "Software\Classes\{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; ValueName: "{#MyAppAssocKey}"; ValueData: ""; Flags: uninsdeletevalue
-Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}"; ValueType: string; ValueName: ""; ValueData: "{#MyAppAssocName}"; Flags: uninsdeletekey
-Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\{#MyAppExeName},0"
-Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
-Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".myp"; ValueData: ""
-
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "C:\Users\Максим Вишняков\source\repos\NTVP\NoteApp\src\NoteApp\NoteApp.View\Resources\icons8-notepad-100.ico"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "C:\Users\Максим Вишняков\source\repos\NTVP\NoteApp\src\NoteApp\NoteApp.View\Resources\icons8-notepad-100.ico"; Tasks: desktopicon
+Name: "{autoprograms}\{#MyAppName}"; Filename: "..\src\NoteApp\NoteApp.View\Resources\icons8-notepad-100.ico"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "..\src\NoteApp\NoteApp.View\Resources\icons8-notepad-100.ico"; Tasks: desktopicon
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent

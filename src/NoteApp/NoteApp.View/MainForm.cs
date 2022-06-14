@@ -48,17 +48,18 @@ namespace NoteApp.View
         /// <summary>
         /// Поиск индекса в списке заметок по индексу заметки из текущей категории
         /// </summary>
-        private int FindProjectIndex(int index)
+        private int FindNoteIndex(int index)
         {
+            int resultIndex = 0;
             for (int i = 0; i < _project.Notes.Count; i++)
             {
                 if (_project.Notes[i] == _currentNotes[index])
                 {
-                    index = i;
+                    resultIndex = i;
                     break;
                 }
             }
-            return index;
+            return resultIndex;
         }
 
         /// <summary>
@@ -103,7 +104,7 @@ namespace NoteApp.View
                 _project.Notes.Add(noteForm.Note);
                 OutputByCategory();
                 UpdatedListBox();
-                NotesListBox.SelectedIndex = 0;
+                NotesListBox.SelectedIndex = -1;
                 _projectSerializer.SaveToFile(_project);
             }
         }
@@ -118,8 +119,8 @@ namespace NoteApp.View
                 return;
             }
             int currentIndex = index;
-            Note note = _project.Notes[index];
-            index = FindProjectIndex(index);
+            Note note = _currentNotes[index];
+            index = FindNoteIndex(index);
             NoteForm noteForm = new NoteForm();
             noteForm.Note = _project.Notes[index];
             noteForm.ShowDialog();
@@ -128,7 +129,7 @@ namespace NoteApp.View
             {
                 currentIndex = 0;
                 OutputByCategory();
-                UpdateSelectedObject(NotesListBox.SelectedIndex);
+                UpdateSelectedNote(NotesListBox.SelectedIndex);
                 UpdatedListBox();
                 _projectSerializer.SaveToFile(_project);
             }
@@ -167,10 +168,10 @@ namespace NoteApp.View
             {
                 return;
             }
-            index = FindProjectIndex(index);
+            index = FindNoteIndex(index);
             var result = MessageBox.Show("Do you really want to remove " + "\"" + NotesListBox.SelectedItem.ToString() 
                 + "\"" + "?", "Deleting a note", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, 
-                MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBoxDefaultButton.Button1);
             if (result == DialogResult.OK)
             {
                 _project.Notes.RemoveAt(index);
@@ -184,7 +185,7 @@ namespace NoteApp.View
         /// <summary>
         /// Метод для заполнения RichTextBox.
         /// </summary>
-        private void UpdateSelectedObject(int index)
+        private void UpdateSelectedNote(int index)
         {
             if ((index == -1) || (_currentNotes.Count == 0))
             {
@@ -224,7 +225,7 @@ namespace NoteApp.View
             }
             else
             {
-                UpdateSelectedObject(NotesListBox.SelectedIndex);
+                UpdateSelectedNote(NotesListBox.SelectedIndex);
             }
         }
 
@@ -237,12 +238,6 @@ namespace NoteApp.View
         private void EditNoteButton_Click(object sender, EventArgs e)
         {
             EditNote(NotesListBox.SelectedIndex);
-        }
-
-        private void HelpButton_Click(object sender, EventArgs e)
-        {
-            AboutForm aboutForm = new AboutForm();
-            aboutForm.ShowDialog();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -260,7 +255,7 @@ namespace NoteApp.View
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Do you really want exit ?", "Exit", MessageBoxButtons.OKCancel, MessageBoxIcon.Information,
-                MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBoxDefaultButton.Button1);
             if (result == DialogResult.OK)
             {
                 this.Close();
