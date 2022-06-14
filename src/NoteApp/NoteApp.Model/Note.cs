@@ -116,29 +116,14 @@ namespace NoteApp.Model
 		}
 
 		/// <summary>
-		/// 
+		/// Создает экземпляр заметки.
 		/// </summary>
-		/// <param name="name"></param>
-		/// <param name="category"></param>
-		/// <param name="text"></param>
-		/// <param name="creationDate"></param>
-		/// <param name="lastModifiedTime"></param>
 		[JsonConstructor]
 		public Note(string name, NoteCategory category, string text,
 			DateTime creationDate, DateTime lastModifiedTime) =>
 			(_name, _category, _text, _creationDate, _lastModifiedTime)
 			= (name, category, text, creationDate, lastModifiedTime);
 
-
-		/// <summary>
-		/// Создает экземпляр заметки.
-		/// </summary>
-		public Note(string name, NoteCategory category, string text)
-		{
-			Name = name;
-			Category = category;
-			Text = text;
-		}
 
         public Note()
         {
@@ -149,7 +134,7 @@ namespace NoteApp.Model
         /// </summary>
         public object Clone()
 		{
-			return new Note(this.Name, this.Category, this.Text);
+			return new Note(this.Name, this.Category, this.Text, this.CreationDate, this.LastModifiedTime);
 		}
 	}
 }

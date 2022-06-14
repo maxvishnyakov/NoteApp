@@ -27,7 +27,6 @@ namespace NoteApp.Model
         /// <summary>
         /// Сохраняет данные из экземпляра класса в userdata.json.
         /// </summary>
-        /// <param name="project">Сохраняемый экземляр класса Project.</param>
         public void SaveToFile(Project project)
         {
             if (!(Directory.Exists(GetFolderPath(SpecialFolder.ApplicationData)
