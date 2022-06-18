@@ -127,13 +127,16 @@ namespace NoteApp.View
             _project.Notes[index] = noteForm.Note;
             if (noteForm.DialogResult == DialogResult.OK)
             {
-                currentIndex = 0;
+                currentIndex = -1;
                 OutputByCategory();
                 UpdateSelectedNote(NotesListBox.SelectedIndex);
                 UpdatedListBox();
                 _projectSerializer.SaveToFile(_project);
             }
-            NotesListBox.SelectedIndex = currentIndex;
+            if ((NotesListBox.Items.Count != 0) && (currentIndex < NotesListBox.Items.Count))
+            {
+                NotesListBox.SelectedIndex = currentIndex;
+            }
         }
 
         /// <summary>
@@ -168,6 +171,8 @@ namespace NoteApp.View
             {
                 return;
             }
+            int currentIndex = index;
+            Note note = _project.Notes[index];
             index = FindNoteIndex(index);
             var result = MessageBox.Show("Do you really want to remove " + "\"" + NotesListBox.SelectedItem.ToString() 
                 + "\"" + "?", "Deleting a note", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, 
@@ -180,6 +185,10 @@ namespace NoteApp.View
                 UpdatedListBox();
                 _projectSerializer.SaveToFile(_project);
             }
+            if ((NotesListBox.Items.Count != 0) && (currentIndex < NotesListBox.Items.Count))
+            {
+                NotesListBox.SelectedIndex = currentIndex;
+            }
         }
 
         /// <summary>
@@ -187,7 +196,7 @@ namespace NoteApp.View
         /// </summary>
         private void UpdateSelectedNote(int index)
         {
-            if ((index == -1) || (_currentNotes.Count == 0))
+            if ((index == -1) || (_currentNotes.Count == 0) || (_currentNotes.Count <= index))
             {
                 ClearSelectedNote();
                 return;
